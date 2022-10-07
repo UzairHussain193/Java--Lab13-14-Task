@@ -16,6 +16,7 @@ import java.io.*;
 class Reg_Form extends JFrame implements ActionListener {
     Container c;
     JLabel title, name, roll, sec, batch, gender, qualification, address, country;
+    static String str1, str2, str3, str4, str5, str6, str7, str8;
     JTextField tname, troll, tsec, tbatch;
     JTextArea taddress;
     JComboBox tcountry;
@@ -194,12 +195,13 @@ class Reg_Form extends JFrame implements ActionListener {
         save.addActionListener(this);
         print.addActionListener(this);
         database.addActionListener(this);
+        clear.addActionListener(this);
 
         setVisible(true);
 
     }
 
-    void save() { // method for when save button is selected
+    public void save() { // method for when save button is selected
         Writer write;
         try {
             write = new FileWriter("Task.json");
@@ -208,6 +210,249 @@ class Reg_Form extends JFrame implements ActionListener {
         } catch (Exception a) {
             a.printStackTrace();
         }
+    }
+
+    public void print() {
+        JFrame f2 = new JFrame(); // will open new frame to display details
+
+        f2.setTitle("Showing Details");
+        f2.setBackground(Color.BLACK);
+        f2.setBounds(300, 90, 600, 500);
+        f2.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        f2.setForeground(Color.ORANGE);
+        a = new ImageIcon("2.png");
+        f2.setIconImage(a.getImage());
+        f2.setLayout(new FlowLayout(FlowLayout.CENTER));
+        f2.setResizable(false);
+
+        f2.getContentPane().setBackground(Color.ORANGE);
+        f2.setLayout(null);
+        JLabel title = new JLabel("Registration Form");
+        title.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 28));
+        title.setForeground(Color.BLACK);
+        title.setBackground(Color.GRAY);
+        title.setBounds(150, 30, 300, 30);
+        f2.add(title);
+
+        JLabel name = new JLabel("Name");
+        name.setSize(190, 20);
+        name.setLocation(100, 100);
+        f2.add(name);
+
+        JTextField tnam = new JTextField();
+        tnam.setSize(190, 20);
+        tnam.setLocation(200, 100);
+        tnam.setForeground(Color.BLUE);
+        tnam.setEditable(false);
+        tnam.setText(tname.getText());
+        f2.add(tnam);
+
+        JLabel roll = new JLabel("Roll No: ");
+        roll.setSize(100, 20);
+        roll.setLocation(100, 130);
+        f2.add(roll);
+
+        JTextField trol = new JTextField();
+        trol.setSize(190, 20);
+        trol.setLocation(200, 130);
+        trol.setForeground(Color.BLUE);
+        trol.setEditable(false);
+        trol.setText(troll.getText());
+        f2.add(trol);
+
+        JLabel batch = new JLabel("Batch: ");
+        batch.setSize(190, 20);
+        batch.setLocation(100, 160);
+        f2.add(batch);
+
+        JTextField tbat = new JTextField();
+        tbat.setSize(190, 20);
+        tbat.setLocation(200, 160);
+        tbat.setForeground(Color.BLUE);
+        tbat.setEditable(false);
+        tbat.setText(tbatch.getText());
+        f2.add(tbat);
+
+        JLabel sec = new JLabel("Section: ");
+        sec.setSize(190, 20);
+        sec.setLocation(100, 200);
+        f2.add(sec);
+
+        JTextField ts = new JTextField();
+        ts.setSize(190, 20);
+        ts.setLocation(200, 200);
+        ts.setForeground(Color.BLUE);
+        ts.setEditable(false);
+        ts.setText(tsec.getText());
+        f2.add(ts);
+
+        JLabel gender = new JLabel("Gender:");
+        gender.setSize(100, 20);
+        gender.setLocation(100, 230);
+        f2.add(gender);
+
+        JLabel gend = new JLabel();
+
+        if (male.isSelected()) {
+            gend = new JLabel("Male");
+        } else {
+            gend = new JLabel("Female");
+        }
+
+        JTextField tgen = new JTextField();
+        tgen.setSize(190, 20);
+        tgen.setLocation(200, 230);
+        tgen.setEditable(false);
+        tgen.setText(gend.getText());
+        f2.add(tgen);
+
+        JLabel qualification = new JLabel("Qualification: ");
+        qualification.setSize(100, 20);
+        qualification.setLocation(100, 260);
+        f2.add(qualification);
+
+        JLabel qual = new JLabel();
+        //// Conditions for check boxes of qualification
+        if (postgraduate.isSelected()) { // When Male Button's Selected
+            qual = new JLabel("Post Graduate");
+        } else if (graduate.isSelected()) {
+            qual = new JLabel("Under Graduate");
+        } else if (intermediate.isSelected()) {
+            qual = new JLabel("Intermediate");
+        } else if (matric.isSelected()) {
+            qual = new JLabel("Matric");
+        }
+
+        JTextField tqualif = new JTextField();
+        tqualif.setSize(190, 20);
+        tqualif.setLocation(200, 260);
+        tqualif.setEditable(false);
+        tqualif.setText(qual.getText());
+        f2.add(tqualif);
+
+        JLabel address = new JLabel("Address: ");
+        address.setSize(100, 20);
+        address.setLocation(100, 300);
+        f2.add(address);
+
+        JTextArea tadd = new JTextArea();
+        tadd.setSize(200, 50);
+        tadd.setLocation(200, 300);
+        tadd.setEditable(false);
+        tadd.setText(taddress.getText());
+        f2.add(tadd);
+
+        JLabel country = new JLabel("Country: ");
+        country.setSize(100, 20);
+        country.setLocation(100, 360);
+        f2.add(country);
+
+        JLabel c = new JLabel(count[tcountry.getSelectedIndex()]);
+
+        JTextField tcoun = new JTextField();
+        tcoun.setSize(190, 20);
+        tcoun.setLocation(200, 360);
+        tcoun.setEditable(false);
+        tcoun.setText(c.getText());
+        f2.add(tcoun);
+
+        f2.setVisible(true);
+        f2.setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+
+    public void get() {
+        str1 = tname.getText();
+        str2 = troll.getText();
+        str3 = tbatch.getText();
+        str4 = "";
+        str5 = tsec.getText();
+        str6 = "";
+
+        if (male.isSelected())
+            str4 = "Male";
+        else
+            str4 = "Female";
+        if (matric.isSelected() && intermediate.isSelected() && graduate.isSelected() && postgraduate.isSelected()) {
+            str6 = matric.getText() + ", " + intermediate.getText() + ", " + graduate.getText() + " and "
+                    + postgraduate.getText();
+        } else if (matric.isSelected() && intermediate.isSelected() && graduate.isSelected()) {
+            str6 = matric.getText() + ", " + intermediate.getText() + ", " + graduate.getText();
+        } else if (matric.isSelected() && intermediate.isSelected()) {
+            str6 = matric.getText() + ", " + intermediate.getText();
+        } else if (matric.isSelected()) {
+            str6 = matric.getText();
+        } else if (intermediate.isSelected()) {
+            str6 = intermediate.getText();
+        } else if (graduate.isSelected()) {
+            str6 = graduate.getText();
+        } else if (postgraduate.isSelected()) {
+            str6 = postgraduate.getText();
+        } // end of if else conditional
+        str7 = address.getText();
+        str8 = (String) tcountry.getSelectedItem();
+    } // end of get
+
+    public void insertDatabase() throws ClassNotFoundException, SQLException {
+
+        String driver = "com.mysql.cj.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/Demo_db";
+        String uname = "root";
+        String pass = "pakistan92";
+        String Query = "SELECT * FROM Std_details";
+
+        try {
+
+            Class.forName(driver);
+            Connection con = DriverManager.getConnection(url, uname, pass);
+            System.out.println("Connected");
+
+            Statement s = con.createStatement();
+            ResultSet rs = s.executeQuery(Query);
+            // iterate through the java resultset
+            get();
+            int count = s.executeUpdate("INSERT INTO jdbc.`Std_details` VALUES('" + str1 + "', '" + str2 + "', '" + str3
+                    + "', '" + str4 + "', '" + str5 + "', '" + str6 + "', '" + str7 + "', '" + str8 + "')");
+            System.out.println(count + " Rows affected");
+
+            s.close();
+            rs.close();
+
+        } catch (Exception e) {
+            System.err.println("SQL Exception: " + e.getMessage());
+        }
+    } //
+
+    public void fetchData() throws ClassNotFoundException, SQLException {
+        String driver = "com.mysql.cj.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/Demo_db";
+        String uname = "root";
+        String pass = "pakistan92";
+        String Query = "SELECT * FROM Std_details";
+
+        Class.forName(driver);
+        Connection com = DriverManager.getConnection(url, uname, pass); // In XAMPP we have not to store password in
+                                                                        // getConnection,but rather we use empy string
+                                                                        // at place of password parameter
+        Statement st = com.createStatement();
+        ResultSet rs = st.executeQuery(Query);
+        get();
+
+        while (rs.next()) {
+            String name = rs.getString(1);
+            String roll = rs.getString(2);
+            String batch = rs.getString(3);
+            String gender = rs.getString(4);
+            String sec = rs.getString(5);
+            String qualification = rs.getString(6);
+            String address = rs.getString(7);
+            String country = rs.getString(8);
+
+            System.out.print(name + "\t || " + roll + "\t || " + batch + "\t || " + gender + "\t || " + sec
+                    + "\t || " + qualification + "\t || " + address + "\t || ");
+            System.out.println(country);
+        }
+        st.close();
+        rs.close();
     }
 
     @Override
@@ -257,155 +502,29 @@ class Reg_Form extends JFrame implements ActionListener {
         if (e.getSource() == print)
 
         { // when Print button is selected
-
             save();
             this.dispose();
+            print(); // call the prints method to print those save data from json file
+        }
+        if (e.getSource() == database)
 
-            JFrame f2 = new JFrame(); // will open new frame to display details
+        { // when Print button is selected
+            try {
+                insertDatabase();
+                JOptionPane.showMessageDialog(null, "Databse updated successfully.");
+            } catch (ClassNotFoundException | SQLException ex) {
+                throw new RuntimeException(ex);
+            } // call the prints method to print those save data from json file
+        }
+        if (e.getSource() == clear)
 
-            f2.setTitle("Showing Details");
-            f2.setBackground(Color.BLACK);
-            f2.setBounds(300, 90, 600, 500);
-            f2.setDefaultCloseOperation(EXIT_ON_CLOSE);
-            f2.setForeground(Color.ORANGE);
-            a = new ImageIcon("2.png");
-            f2.setIconImage(a.getImage());
-            f2.setLayout(new FlowLayout(FlowLayout.CENTER));
-            f2.setResizable(false);
-
-            f2.getContentPane().setBackground(Color.ORANGE);
-            f2.setLayout(null);
-            JLabel title = new JLabel("Registration Form");
-            title.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 28));
-            title.setForeground(Color.BLACK);
-            title.setBackground(Color.GRAY);
-            title.setBounds(150, 30, 300, 30);
-            f2.add(title);
-
-            JLabel name = new JLabel("Name");
-            name.setSize(190, 20);
-            name.setLocation(100, 100);
-            f2.add(name);
-
-            JTextField tnam = new JTextField();
-            tnam.setSize(190, 20);
-            tnam.setLocation(200, 100);
-            tnam.setForeground(Color.BLUE);
-            tnam.setEditable(false);
-            tnam.setText(tname.getText());
-            f2.add(tnam);
-
-            JLabel roll = new JLabel("Roll No: ");
-            roll.setSize(100, 20);
-            roll.setLocation(100, 130);
-            f2.add(roll);
-
-            JTextField trol = new JTextField();
-            trol.setSize(190, 20);
-            trol.setLocation(200, 130);
-            trol.setForeground(Color.BLUE);
-            trol.setEditable(false);
-            trol.setText(troll.getText());
-            f2.add(trol);
-
-            JLabel batch = new JLabel("Batch: ");
-            batch.setSize(190, 20);
-            batch.setLocation(100, 160);
-            f2.add(batch);
-
-            JTextField tbat = new JTextField();
-            tbat.setSize(190, 20);
-            tbat.setLocation(200, 160);
-            tbat.setForeground(Color.BLUE);
-            tbat.setEditable(false);
-            tbat.setText(tbatch.getText());
-            f2.add(tbat);
-
-            JLabel sec = new JLabel("Section: ");
-            sec.setSize(190, 20);
-            sec.setLocation(100, 200);
-            f2.add(sec);
-
-            JTextField ts = new JTextField();
-            ts.setSize(190, 20);
-            ts.setLocation(200, 200);
-            ts.setForeground(Color.BLUE);
-            ts.setEditable(false);
-            ts.setText(tsec.getText());
-            f2.add(ts);
-
-            JLabel gender = new JLabel("Gender:");
-            gender.setSize(100, 20);
-            gender.setLocation(100, 230);
-            f2.add(gender);
-
-            JLabel gend = new JLabel();
-
-            if (male.isSelected()) {
-                gend = new JLabel("Male");
-            } else {
-                gend = new JLabel("Female");
-            }
-
-            JTextField tgen = new JTextField();
-            tgen.setSize(190, 20);
-            tgen.setLocation(200, 230);
-            tgen.setEditable(false);
-            tgen.setText(gend.getText());
-            f2.add(tgen);
-
-            JLabel qualification = new JLabel("Qualification: ");
-            qualification.setSize(100, 20);
-            qualification.setLocation(100, 260);
-            f2.add(qualification);
-
-            JLabel qual = new JLabel();
-            //// Conditions for check boxes of qualification
-            if (postgraduate.isSelected()) { // When Male Button's Selected
-                qual = new JLabel("Post Graduate");
-            } else if (graduate.isSelected()) {
-                qual = new JLabel("Under Graduate");
-            } else if (intermediate.isSelected()) {
-                qual = new JLabel("Intermediate");
-            } else if (matric.isSelected()) {
-                qual = new JLabel("Matric");
-            }
-
-            JTextField tqualif = new JTextField();
-            tqualif.setSize(190, 20);
-            tqualif.setLocation(200, 260);
-            tqualif.setEditable(false);
-            tqualif.setText(qual.getText());
-            f2.add(tqualif);
-
-            JLabel address = new JLabel("Address: ");
-            address.setSize(100, 20);
-            address.setLocation(100, 300);
-            f2.add(address);
-
-            JTextArea tadd = new JTextArea();
-            tadd.setSize(200, 50);
-            tadd.setLocation(200, 300);
-            tadd.setEditable(false);
-            tadd.setText(taddress.getText());
-            f2.add(tadd);
-
-            JLabel country = new JLabel("Country: ");
-            country.setSize(100, 20);
-            country.setLocation(100, 360);
-            f2.add(country);
-
-            JLabel c = new JLabel(count[tcountry.getSelectedIndex()]);
-
-            JTextField tcoun = new JTextField();
-            tcoun.setSize(190, 20);
-            tcoun.setLocation(200, 360);
-            tcoun.setEditable(false);
-            tcoun.setText(c.getText());
-            f2.add(tcoun);
-
-            f2.setVisible(true);
-            f2.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        { // when Print button is selected
+            try {
+                fetchData();
+                JOptionPane.showMessageDialog(null, "Databse fetching started.");
+            } catch (ClassNotFoundException | SQLException ex) {
+                throw new RuntimeException(ex);
+            } // call the prints method to print those save data from json file
         }
 
     }
@@ -417,45 +536,3 @@ public class SqlTask {
     }
 
 }
-// public class SqlTask {
-// public static void main(String[] args) {
-
-// String driver = "com.mysql.cj.jdbc.Driver";
-// String url = "jdbc:mysql://localhost:3306/Demo_db";
-// String uname = "root";
-// String pass = "pakistan92";
-// String Query = "SELECT * FROM Std_details";
-// // String Query1 =
-
-// try {
-
-// Class.forName(driver);
-// Connection con = DriverManager.getConnection(url, uname, pass);
-// System.out.println("Connected");
-
-// Statement s = con.createStatement();
-// ResultSet rs = s.executeQuery(Query);
-// // iterate through the java resultset
-// while (rs.next()) {
-// String Name = rs.getString("Std_Name");
-// String roll = rs.getString("RollNo");
-// String batch = rs.getString("Batch");
-// String gender = rs.getString("Gender");
-// String sec = rs.getString("Sec");
-// String qual = rs.getString("Qualification");
-// String add = rs.getString("Address");
-// String country = rs.getString("Country");
-
-// // print the results
-// System.out.format("%s, %s, %s, %s, %s, %s\n", Name, roll, batch, gender, sec,
-// qual, add, country);
-// }
-
-// s.close();
-
-// } catch (Exception e) {
-// System.err.println("SQL Exception: " + e.getMessage());
-// }
-// }
-
-// }
