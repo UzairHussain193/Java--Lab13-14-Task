@@ -225,16 +225,18 @@ class Reg_Form extends JFrame implements ActionListener {
         f2.setLayout(new FlowLayout(FlowLayout.CENTER));
         f2.setResizable(false);
 
-        f2.getContentPane().setBackground(Color.ORANGE);
+        f2.getContentPane().setBackground(Color.GRAY);
         f2.setLayout(null);
         JLabel title = new JLabel("Registration Form");
-        title.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 28));
-        title.setForeground(Color.BLACK);
+        title.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 32));
+        title.setForeground(Color.WHITE);
         title.setBackground(Color.GRAY);
-        title.setBounds(150, 30, 300, 30);
+        title.setBounds(150, 30, 300, 40);
         f2.add(title);
 
         JLabel name = new JLabel("Name");
+        name.setBackground(Color.WHITE);
+        name.setForeground(Color.BLUE);
         name.setSize(190, 20);
         name.setLocation(100, 100);
         f2.add(name);
@@ -248,6 +250,8 @@ class Reg_Form extends JFrame implements ActionListener {
         f2.add(tnam);
 
         JLabel roll = new JLabel("Roll No: ");
+        roll.setBackground(Color.WHITE);
+        roll.setForeground(Color.BLUE);
         roll.setSize(100, 20);
         roll.setLocation(100, 130);
         f2.add(roll);
@@ -261,6 +265,8 @@ class Reg_Form extends JFrame implements ActionListener {
         f2.add(trol);
 
         JLabel batch = new JLabel("Batch: ");
+        batch.setBackground(Color.WHITE);
+        batch.setForeground(Color.BLUE);
         batch.setSize(190, 20);
         batch.setLocation(100, 160);
         f2.add(batch);
@@ -274,6 +280,8 @@ class Reg_Form extends JFrame implements ActionListener {
         f2.add(tbat);
 
         JLabel sec = new JLabel("Section: ");
+        sec.setBackground(Color.WHITE);
+        sec.setForeground(Color.BLUE);
         sec.setSize(190, 20);
         sec.setLocation(100, 200);
         f2.add(sec);
@@ -287,6 +295,8 @@ class Reg_Form extends JFrame implements ActionListener {
         f2.add(ts);
 
         JLabel gender = new JLabel("Gender:");
+        gender.setBackground(Color.WHITE);
+        gender.setForeground(Color.BLUE);
         gender.setSize(100, 20);
         gender.setLocation(100, 230);
         f2.add(gender);
@@ -307,6 +317,8 @@ class Reg_Form extends JFrame implements ActionListener {
         f2.add(tgen);
 
         JLabel qualification = new JLabel("Qualification: ");
+        qualification.setBackground(Color.WHITE);
+        qualification.setForeground(Color.BLUE);
         qualification.setSize(100, 20);
         qualification.setLocation(100, 260);
         f2.add(qualification);
@@ -331,6 +343,8 @@ class Reg_Form extends JFrame implements ActionListener {
         f2.add(tqualif);
 
         JLabel address = new JLabel("Address: ");
+        address.setBackground(Color.WHITE);
+        address.setForeground(Color.BLUE);
         address.setSize(100, 20);
         address.setLocation(100, 300);
         f2.add(address);
@@ -343,6 +357,8 @@ class Reg_Form extends JFrame implements ActionListener {
         f2.add(tadd);
 
         JLabel country = new JLabel("Country: ");
+        country.setBackground(Color.WHITE);
+        country.setForeground(Color.WHITE);
         country.setSize(100, 20);
         country.setLocation(100, 360);
         f2.add(country);
