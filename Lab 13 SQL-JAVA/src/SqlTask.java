@@ -104,12 +104,14 @@ class Reg_Form extends JFrame implements ActionListener {
         male.setSelected(true);
         male.setSize(75, 20);
         male.setLocation(200, 230);
+        male.setBackground(Color.GREEN);
         c.add(male);
 
         female = new JRadioButton("Female: ");
         female.setSelected(false);
         female.setSize(80, 20);
         female.setLocation(275, 230);
+        female.setBackground(Color.GREEN);
         c.add(female);
 
         gen = new ButtonGroup();
@@ -124,21 +126,25 @@ class Reg_Form extends JFrame implements ActionListener {
         matric = new JCheckBox("Matric");
         matric.setSize(100, 50);
         matric.setLocation(200, 260);
+        matric.setBackground(Color.GREEN);
         c.add(matric);
 
         intermediate = new JCheckBox("Intermediate");
         intermediate.setSize(100, 50);
         intermediate.setLocation(300, 260);
+        intermediate.setBackground(Color.GREEN);
         c.add(intermediate);
 
         graduate = new JCheckBox("Graduate");
         graduate.setSize(100, 50);
         graduate.setLocation(200, 300);
+        graduate.setBackground(Color.GREEN);
         c.add(graduate);
 
         postgraduate = new JCheckBox("Postgraduate");
         postgraduate.setSize(120, 50);
         postgraduate.setLocation(300, 300);
+        postgraduate.setBackground(Color.GREEN);
         c.add(postgraduate);
 
         address = new JLabel("Address: ");
@@ -176,7 +182,7 @@ class Reg_Form extends JFrame implements ActionListener {
         print.setForeground(Color.WHITE);
         c.add(print);
 
-        database = new JButton("DATABASE");
+        database = new JButton("INSERT");
         database.setSize(100, 30);
         database.setLocation(360, 480);
         database.setBackground(Color.BLACK);
@@ -184,7 +190,7 @@ class Reg_Form extends JFrame implements ActionListener {
         database.addActionListener(this);
         c.add(database);
 
-        clear = new JButton("CLEAR");
+        clear = new JButton("FETCH");
         clear.setSize(100, 30);
         clear.setLocation(490, 480);
         clear.setBackground(Color.BLACK);
@@ -426,7 +432,7 @@ class Reg_Form extends JFrame implements ActionListener {
             ResultSet rs = s.executeQuery(Query);
             // iterate through the java resultset
             get();
-            int count = s.executeUpdate("INSERT INTO jdbc.`Std_details` VALUES('" + str1 + "', '" + str2 + "', '" + str3
+            int count = s.executeUpdate("INSERT INTO `Std_details` VALUES('" + str1 + "', '" + str2 + "', '" + str3
                     + "', '" + str4 + "', '" + str5 + "', '" + str6 + "', '" + str7 + "', '" + str8 + "')");
             System.out.println(count + " Rows affected");
 
